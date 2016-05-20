@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<script src="Img2ascii.js"> </script>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+	<div id="content" style="font-size: small; margin: 0px; letter-spacing: 6px; padding: 0px; font-family: 'Consolas, monospace';"> </div>
+	<script>
+		var img2ascii = new Img2ascii();
+		img2ascii.setShortRamp();
+
+		img2ascii.invoke('amace.png');
+    </script>
+  </body>
+</html>      
+
+
