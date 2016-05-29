@@ -38,12 +38,12 @@ function Img2ascii() {
 		var imageX = 0;
 		var imageY = 0;
 
-		// This is used is the max number of characters, or 
-		// "ascii pixels", depending on the width-height relation 
+		// This is used is the max number of characters, or
+		// "ascii pixels", depending on the width-height relation
 		// of the image.
 		var columnRowMax = 60.0;
 
-		// Set whether the max number of ASCII pixels should be 
+		// Set whether the max number of ASCII pixels should be
 		// the width or the height of them image (judged from
 		// a portrait or a landscape image)
 		var scaleByWidth = imageWidth > imageHeight;
