@@ -34,26 +34,22 @@ function Img2ascii() {
 		canvas.width = imageWidth;
 		canvas.height = imageHeight;
 
-		// Positioning
-		var imageX = 0;
-		var imageY = 0;
-
-		// This is used is the max number of characters, or
-		// "ascii pixels", depending on the width-height relation
-		// of the image.
+		// This is used as the max number of characters, or
+		// "ascii pixels", for a row or column, depending 
+		// on the width-height relation of the image.
 		var columnRowMax = 60.0;
 
 		// Set whether the max number of ASCII pixels should be
-		// the width or the height of them image (judged from
+		// the width or the height of the image (judged from
 		// a portrait or a landscape image)
 		var scaleByWidth = imageWidth > imageHeight;
 		var factor = scaleByWidth ? imageWidth / columnRowMax : imageHeight / columnRowMax;
 
 		// Trace the image onto the canvas
-		context.drawImage(imageObj, imageX, imageY);
+		context.drawImage(imageObj, 0, 0);
 
 		// Collect image data
-		var imageData = context.getImageData(imageX, imageY, imageWidth, imageHeight);
+		var imageData = context.getImageData(0, 0, imageWidth, imageHeight);
 		var data = imageData.data;
 
 		// iterate over all pixels based on x and y coordinates
@@ -61,6 +57,8 @@ function Img2ascii() {
 		var map2d = [];
 		var avg = 0;
 
+		// Set min and max values for clamping resulting
+		// pixel values
 		var min = 255, max = 0;
 		for(var y = 0; y < imageHeight; y++) {
 			// loop through each column
@@ -84,11 +82,14 @@ function Img2ascii() {
 		var row = "";
 		var index = 0;
 
+		// Create element which treats whitespaces as characters
 		var pre = document.createElement('pre');
 
 		for (var y = 0; y < (imageHeight / factor); y++ ) {
-
+			// For each row..
 			for (var x = 0; x < parseInt(imageWidth / factor); x++ ) {
+				// For each column in the row..
+				// Set and get the "ascii pixel value"
 				index = parseInt(x * factor + parseInt(y * imageWidth));
 
 				var value = map2d[parseInt(y * factor)][parseInt(x * factor)] * ramp.length;
