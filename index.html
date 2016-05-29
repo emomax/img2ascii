@@ -1,24 +1,50 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-	<script src="lib/img2ascii.js"> </script>
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    </style>
-  </head>
-  <body>
-    <canvas id="myCanvas"></canvas>
-	<div id="content" style="font-size: small; margin: 0px; letter-spacing: 6px; padding: 0px; font-family: 'Consolas, monospace';"> </div>
-	<script>
-		var img2ascii = new Img2ascii();
-		img2ascii.setShortRamp();
+	<head>
+		<title>img2ascii.js - The image to ASCII-art converter!</title>
+		<script src="lib/img2ascii.js"> </script>
+		<style>
+			body {
+				margin: 0px;
+				padding: 0px;
+			}
 
-		img2ascii.invoke('assets/example.png');
-    </script>
-  </body>
-</html>      
+			#container {
+				display: flex;
+			}
+
+			#img {
+				width: 100%;
+				background-size: 100%;
+				background-repeat: no-repeat;
+
+				display: flex;
+
+				flex-basis: 0;
+				flex-grow: 1;
+			}
+			#content {
+				width: 50%;
+				display: flex;
+				flex-basis: 0;
+				flex-grow: 1;
+			}
+		</style>
+		<script>
+				var img2ascii = new Img2ascii();
+				img2ascii.setShortRamp();
+
+				img2ascii.invoke('assets/example.png');
+		</script>
+	</head>
+	<body>
+		<canvas id="myCanvas"></canvas>
+
+		<div id="container">
+			<div id="img"></div>
+			<div id="content" style="font-size: small; margin: 0px; letter-spacing: 0px; padding: 0px; font-family: 'Consolas, monospace';"> </div>
+		</div>
+	</body>
+</html>
 
 
